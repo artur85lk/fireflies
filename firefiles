@@ -1,0 +1,26 @@
+import requests
+
+params = {
+    'FIREFLIES': '7295',
+}
+response = requests.get('https://host-igc0rfgj-prod.prod.cywar.xyz:52667/index.php', params=params, verify=False)
+xcode = str(response.text.encode('utf8')).split('GET ')
+number = str(xcode[1][0]) + str(xcode[1][1]) + str(xcode[1][2]) + str(xcode[1][3]) + str(xcode[1][4])
+print(number)
+x = number
+while True:
+    y = x
+    params = {
+        'FIREFLIES': str(y),
+    }
+    response = requests.get('https://host-igc0rfgj-prod.prod.cywar.xyz:52667/index.php', params=params, verify=False)
+
+    xcode = str(response.text.encode('utf8')).split('GET ')
+    if str(xcode[1][4]) != " ":
+        newnumber = str(xcode[1][0]) + str(xcode[1][1]) + str(xcode[1][2]) + str(xcode[1][3]) + str(xcode[1][4])
+    else:
+        newnumber = str(xcode[1][0]) + str(xcode[1][1]) + str(xcode[1][2]) + str(xcode[1][3])
+    print(newnumber)
+    x = newnumber
+    if x == "12431":
+        break
